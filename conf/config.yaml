@@ -1,0 +1,59 @@
+
+wandb_log: true
+wandb_entity: null
+wandb_project: null
+wandb_key: null
+
+seed: 24
+
+n_devices: 4
+
+model_name: 'meta-llama/Llama-3.1-8B-Instruct'
+grad_acc_steps: 2
+distributed: True
+global_batch_size: 16
+batch_size_eval: 16
+world_size: 4
+dynamo_size_limit: 64
+pack: True
+use_liger: true
+use_layer_norm: True
+torch_dtype: bfloat16
+attn_implementation: flash_attention_2
+use_torch_compile: True
+gradient_checkpointing: true
+lambda_sae: 0.1
+lr: 2.0e-5
+weight_decay: 0.1
+eps: 1e-8
+beta1: 0.9
+beta2: 0.95
+test_sample: 50
+dataset_num_proc: 48
+num_works: 4
+
+eval_step_freq: 1000
+
+laryer_index: 31
+sae_model: 'llama_scope_lxr_8x'
+max_length: 16384
+
+test_max_length: 2000
+pre_token: 20
+hidden_size: 4096
+
+
+lr_scheduler: cosine_with_min_lr
+warmup_ratio: 0.05
+train_steps: 300000
+n_epochs: 0
+global_step: 0
+save_step_freq: 10000
+min_lr_rate: 0.1
+max_seq_length: 1024
+
+
+output_dir: '/research/projects/trans_llm/Zeru_Shi/SAE-learner/checkpoint'
+data_path: '/research/projects/trans_llm/Zeru_Shi/SAE-learner/train_data_.jsonl'
+val_path: '/research/projects/trans_llm/Zeru_Shi/prm800k/prm800k/math_splits/test.jsonl'
+log_path: '/research/projects/trans_llm/Zeru_Shi/SAE-learner/log'
